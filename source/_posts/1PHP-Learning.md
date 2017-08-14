@@ -3,6 +3,8 @@ title: PHP Learning
 date: 2017-08-08 11:58:38
 tags: [PHP]
 ---
+## 
+
 
 ## PHP发送HHTP请求的几种方式
 
@@ -68,3 +70,9 @@ tags: [PHP]
 -  **ThinkPHP3.2**国内使用比较多，优点是文档非常多，各种问题解决方案比较多，缺点是代码不够规范，理念落后。
 
 -  **Laravel** 是一个现代化的PHP开发框架，代码优雅，使用 composer 方式扩展功能，社区活跃，缺点是比较重，比较适合做后台管理或者应用型WEB系统。
+
+
+## 参考资料
+[1] [15 张思维导图来快速学习 PHP 语言基础](http://www.runoob.com/w3cnote/15-php-mind-mapping.html)
+
+[2] [HTTPS 与 SSL 证书概要](http://www.runoob.com/w3cnote/https-ssl-intro.html)

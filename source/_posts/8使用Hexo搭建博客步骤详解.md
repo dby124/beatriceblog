@@ -31,6 +31,35 @@ Git用于把部署在GitHub的内容获取至本地，Node.js用于安装Hexo。
 ### 安装Git
 -  安装 Git,目前支持 Linux/Unix、Solaris、Mac和 Windows 平台上运行
 -  配置，关联GitHub
+
+	> 根据已有的GitHub账号，配置本地Git（其实就是建立本地Git与服务器上GitHub账号的关联）之后，就可以将本地的Git仓库上传拷贝到自己的公共库中了，当然下面这种方法是通过git-bash命令窗口输入命令来实现的，
+
+	- 在git-bash命令窗口中输入一下命令
+		```sh
+		$ mkdir test                                       # 表示在Git的安装目录下，创建一个名为“test”的文件夹
+		$ cd test/                                          # 进入测试目录
+		$ echo "# 第一次使用 Git ，进行测试" >> README.md     # 创建 README.md 文件并写入内容
+		$ ls                                               # 查看目录下的文件
+		$ git init                                         # 初始化，在test目录下生成.git文件夹
+		$ git add README.md                                # 添加文件
+		$ git commit -m "添加 README.md 文件"               # 提交并备注信息
+		```
+	- 执行提交并备注信息的指令后，输出信息
+   ![提交并备注信息的指令](/images/commitinfo.png)
+	
+	- 通过git命令将本地的文件上传到GitHub账户对应的仓库中提交到 Github
+
+		```sh
+		$ git remote add origin git@github.com:dby124/test.git
+		$ git push -u origin master
+		```
+
+	- 效果如下图：
+   ![提交到GitHub上](/images/commit2github.png)
+	
+	- 在git\logs\refs\heads文件夹中的master文件，其内容如下：
+![master文件](/images/master.png)
+
 -  [参考GitHub简明教程](http://www.runoob.com/w3cnote/git-guide.html)
 
 ### 安装Node.js
@@ -53,32 +82,31 @@ Git用于把部署在GitHub的内容获取至本地，Node.js用于安装Hexo。
 以上环境基本就配置完成
 
 ### 安装Hexo
-这一步的前提是必须先安装 Node.js和Git
+-  这一步的前提是必须先安装 Node.js和Git
 
 		npm install hexo -g
-升级，更新hexo到最新版（升级仅需一步就把 Hexo 本体和所有相依套件安装完毕）
+-  升级，更新hexo到最新版（升级仅需一步就把 Hexo 本体和所有相依套件安装完毕）
 
 		npm update hexo -g
-初始化如果指定 `<folder>`，便会在目前的资料夹建立一个名为` <folder> `的新资料夹；否则会在目前资料夹初始化。在Git命令行窗口中输入（指定 <folder>的方法是）：
+-  初始化如果指定 `<folder>`，便会在目前的资料夹建立一个名为` <folder> `的新资料夹；否则会在目前资料夹初始化。在Git命令行窗口中输入（指定 <folder>的方法是）：
 
 		cd [需要指定的文件夹路径]
-跳转到对应的文件夹目录下后，进行初始化：
+-  跳转到对应的文件夹目录下后，进行初始化：
 
 		hexo init
-初始化后对应的资料夹中有一下文件（_config.yml, theme/, source/, scaffolds/, package.json, .gitignore）;
-文件作用：
+- 初始化后对应的资料夹中有一下文件（_config.yml, theme/, source/, scaffolds/, package.json, .gitignore）;文件作用：
 	
-> _config.yml：整个站点的配置，包括基本介绍，所使用的主题，关联的仓库等；
->
-> theme/：所用的主题以及主题的配置；
->
-> source/：目前所写的所有文章以及404页面等；
->
-> scaffolds/：Hexo所提供的模板文件；
->
-> package.json：说明站点使用了哪些包；
->
-> gitignore：放置在git端时忽略的文件；
+	> _config.yml：整个站点的配置，包括基本介绍，所使用的主题，关联的仓库等；
+	>
+	> theme/：所用的主题以及主题的配置；
+	>
+	> source/：目前所写的所有文章以及404页面等；
+	>
+	> scaffolds/：Hexo所提供的模板文件；
+	>
+	> package.json：说明站点使用了哪些包；
+	>
+	> gitignore：放置在git端时忽略的文件；
 
 
 ### 安装Markdown编辑器
@@ -114,3 +142,10 @@ Git用于把部署在GitHub的内容获取至本地，Node.js用于安装Hexo。
 
 		$ hexo g                     # 生成静态网页
 		$ hexo d                     #上传到GitHub对应的仓库中
+
+## 自动备份Hexo博客源文件
+
+参考：[hexo个人博客搭建教程](https://cherryzzangg.github.io/2017/08/12/hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/)
+
+
+每次更新博文并`deploy`到服务器上之后，备份就会自动启动并完成备份。
