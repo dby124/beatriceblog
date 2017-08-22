@@ -6,7 +6,7 @@ categories: [数据库]
 ---
 ## 概述
 
--  关系型数据库——由表来存储相关的数据，MySQL，MS SQL Server，Oracle等都是关系型数据库；
+-  关系型数据库——由表来存储相关的数据，MySQL，SQL Server，Oracle等都是关系型数据库；
 
 -  元数据：用于集成并管理数据。
 -  MySQL数据库
