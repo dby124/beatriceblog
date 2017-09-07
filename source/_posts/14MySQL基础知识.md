@@ -431,43 +431,21 @@ categories: [数据库]
 	SELECT 4&5&6, BIN (4&5&6) 二进制；
 	```
 	
-	- 结果：
+	结果：
 
-	　	<table>
-			<tr  align="center">
-				<td>
-					<p>5&6</p>
-				</td>
-				<td>
-					<p>二进制</p>
-				</td>
-				<td>
-					<p>4&5&6</p>
-				</td>
-				<td>
-					<p>二进制</p>
-				</td>
-			</tr>
-			<tr  align="center">
-				<td>
-					<p>4</p>
-				</td>
-				<td>
-					<p>100</p>
-				</td>
-				<td>
-					<p>4</p>
-				</td>
-				<td>
-					<p>100</p>
-				</td>
-			</tr>
-		</table>
-
+![按位运算符计算结果](/images/按位运算符计算结果.png)
 
 ## MySQL常用函数
 
--  
+![MySQL常用函数1](/images/MySQL常用函数1.jpg)
+
+![MySQL常用函数2](/images/MySQL常用函数2.jpg)
+
+![MySQL常用函数3](/images/MySQL常用函数3.jpg)
+
+![MySQL常用函数4](/images/MySQL常用函数4.jpg)
+
+![MySQL常用函数5](/images/MySQL常用函数5.jpg)
 
 ## 存储过程和函数的操作
 

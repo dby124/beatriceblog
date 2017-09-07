@@ -20,7 +20,7 @@ categories: [科研]
 	```
 
 # 时域特征：
--  求信号x的时域特征
+-  求信号signal的时域特征
 	- 时域函数	
 
 	```sh
@@ -122,66 +122,152 @@ categories: [科研]
 		```
 
 # 时频域特征
-- 求出一帧信号的小波的特性
+- 求信号的小波的特性
 
-		```sh
-		function [ energy,sqr ] = wave( frame )
-		% 输入参数：frame:一帧信号
-		% 输出参数：
-		%---------energy:小波系数的能量
-		%---------sqr:小波系数的均方差
-			T = wpdec(frame,2,'db2');       %db8小波做两层分解
-		    %重构第二层的所有节点
-		    for i = 1:4
-		        y = wprcoef(T,[2,i-1]);
-		        energy(:,i) = sum(y.*y);     %重构信号的能量
-		        sqr(:,i) = var(y);          %重构信号的均方差
-		    end
-		end
-		```
+	```sh
+	function [ energy,sqr ] = wave( frame )
+	% 输入参数：frame:一帧信号
+	% 输出参数：
+	%---------energy:小波系数的能量
+	%---------sqr:小波系数的均方差
+		T = wpdec(frame,2,'db2');       %db8小波做两层分解
+	    %重构第二层的所有节点
+	    for i = 1:4
+	        y = wprcoef(T,[2,i-1]);
+	        energy(:,i) = sum(y.*y);     %重构信号的能量
+	        sqr(:,i) = var(y);          %重构信号的均方差
+	    end
+	end
+	```
+
+- 小波变换的改进函数
+
+	```sh
+	function [ energy,sqr] = wave( frame,N )
+	% wave:求信号的小波的特性
+	% 输入参数：frame:一帧信号
+	% 输出参数：energy:小波系数的能量；sqr:小波系数的均方差;coef:波峰系数
+	    T = wpdec(frame,N,'db8');       %db8小波做N层分解
+	    %重构第N层的指定节点
+	    for i = 1:(2^N)
+	        y = wprcoef(T,[N,i-1]);
+	        % y = wprcoef(T,[N,mum(i)]);
+	        energy(:,i) = sum(y.*y);     %重构信号的能量
+	        sqr(:,i) = var(y);          %重构信号的均方差
+	        % coef(:,i) = max(y)/mean(y);  %重构信号的波峰系数，效果不好
+	    end
+	end
+	```
+
+- HHT变换的相关特征求取函数
+
+	```sh
+	% 对一个信号做HHT变换，求得相关的特征
+	function [peaks,bjpvar,aveA,mseA,rmsA,msize,ratio1,msee] = infreqfeature(x,fs)
+	% 输入：x 是一个信号，是一个列向量
+	% 输出： 
+	%        peaks 边际谱的前4个峰值
+	%        bjpvar 边际谱的方差
+	%        aveA  各分量瞬时幅度的均值
+	%        rmsA  各分量瞬时幅度的有效值
+	%        mseeA 各分量瞬时幅度的方差和
+	%        msize(1)、msize(2)、msize(3)、msize(4):瞬时频率第三个分量的极大值、极小值点数和第四个分量的极大值、极小值点的个数
+	%        ratio 各分量瞬时频率的方差贡献率
+	%        
+	%        
+	% 调用的函数：
+	% hht工具箱函数：      emd()、hhspectrum()、toimage()
+	% 自定义函数：         findmainfreq()
+	    N = length(x);
+	    imp=emd(x);                  % 对信号进行EMD分解
+	    [m,n]=size(imp);             % 求取EMD分解成几个分量
+	    % 对IMF分量求取瞬时频率与振幅：A：是每个IMF的振幅向量,f:每个IMF对应的归一化瞬时频率，t：时间序列号
+	    [A,f,t] = hhspectrum(imp);
+	    % 求瞬时频率
+	    infreq = fs * f;
+	    %求信号的边界谱bjp，E：对应的振幅值
+	    [E,tt1]=toimage(A,f,t,length(t));
+	    enery = E;
+	    E=flipud(E);
+	    for k=1:size(E,1)
+	        bjp(k)=sum(E(k,:))*1/fs;
+	    end
+	    % 求边界谱的峰值和对应的采样点的位置
+	    % peaks表示前5个峰值，如果需要求这些峰值对应的位置，直接在peaks参数后面加一个参数即可，详见该函数的定义
+	    [peaks] = findmainfreq(bjp);   
+	    bjpvar =  var(bjp);      %边际谱的方差
+	    % 瞬时频率第三个和第四个分量的极值点的个数
+	    [indmin3, indmax3, indzer] = extr(infreq(3,:),1/fs);
+	    msize(1) = length(indmin3);       % 第三个分量极大值点数
+	    msize(2) = length(indmax3);       % 第三个分量极小值点数
+	    [indmin4, indmax4, indzer] = extr(infreq(4,:),1/fs);
+	    msize(3) = length(indmin4);       % 第四个分量极大值点数
+	    msize(4) = length(indmax4);       % 第四个分量极大值点数
+		% 非有效特征，瞬时频率的均值、方差和有效值的特征对于好坏瓶子的区分性很差，所以不需要使用
+	    % 所有分量瞬时频率的均值、方差和有效值
+	    for k = 1:m-1
+		% ave(k) = mean(infreq(k,:));     % 瞬时频率的均值
+	        mse(k) = var(infreq(k,:));      % 各分量的瞬时频率的方差
+		% rms(k) = sqrt(sum((infreq(k,:) - ave(k)).^2)/N);% 各分量的瞬时频率的有效值
+	    end
+	    % 所有分量瞬时幅度的均值、方差和有效值
+	    for k = 1:m-1
+	        aveA(k) = mean(A(k,:));     % 瞬时幅度的均值
+	        mseA(k) = var(A(k,:));      % 各分量的瞬时幅度的方差
+	        rmsA(k) = sqrt(sum((A(k,:) - aveA(k)).^2)/N); % 各分量的瞬时幅度的有效值
+	    end
+	    % 所有分量的方差和
+	    msee = sum(mse);
+	    % 各分量的方差贡献率,此处只求前6个分量的方差贡献率
+	    for j = 1:6
+	        ratio(j) = (100*mse(j))/msee;       %获取瞬时频率的方差贡献率
+	    end
+	    ratio1 = (100*mse(1))/msee;     % 第一个分量的瞬时频率方差贡献率
+	end
+	```
 
 # 频域特征
 - 求出信号的频域特征参数
 
-		```sh
-		function [ area,peaks,loc ] = spectrum( frame )
-		% spectrum:对一帧信号取频谱特征
-		% 输入参数：frame:一帧信号，长度为256
-		% 输出参数：area:频谱面积；peaks：频谱曲线峰值系数(最大5个)：col:最大5个峰值系数对应的位置
-		    N = length(frame);
-		   [f amp] = FFT(frame,N);
-		   temp = amp(1:N/2)';
-		   area = polyarea(1:N/2,temp);       %求频谱面积
-		   [K,V] = findpeaks(temp);         %找出频谱峰值
-		   peaks = sort(K,'descend');       %降序排列峰值
-		   peaks = peaks(1:5);      %取出前5大的峰值
-		   for i = 1:5
-		       mark = find(K == peaks(i));
-		       loc(i) = V(mark);
-		   end
-		end
-		```
+	```sh
+	function [ area,peaks,loc ] = spectrum( frame )
+	% spectrum:对一帧信号取频谱特征
+	% 输入参数：frame:一帧信号，长度为256
+	% 输出参数：area:频谱面积；peaks：频谱曲线峰值系数(最大5个)：col:最大5个峰值系数对应的位置
+	    N = length(frame);
+	   [f amp] = FFT(frame,N);
+	   temp = amp(1:N/2)';
+	   area = polyarea(1:N/2,temp);       %求频谱面积
+	   [K,V] = findpeaks(temp);         %找出频谱峰值
+	   peaks = sort(K,'descend');       %降序排列峰值
+	   peaks = peaks(1:5);      %取出前5大的峰值
+	   for i = 1:5
+	       mark = find(K == peaks(i));
+	       loc(i) = V(mark);
+	   end
+	end
+	```
 
 - 直接求频域特征
 
-		```sh
-		function [ FC,MSF,VF,RMSF,RVF ] = frequency( frame )
-		% frequency:求出一帧信号的频域特征参数
-		% 输入参数：frame:一帧信号
-		% 输出参数： FC:重心频率
-		%           MSF:均方频率
-		%           VF:频率方差
-		%           RMSF:均方根频率
-		%           RVF:频率标准差
-		    delta = 1/48000;     % 采样间隔
-		    N = length(frame(:,1)); % 每帧信号的点数
-		    for i=2:N
-		        s(i,:) = (frame(i,:)-frame(i-1,:))/delta;
-		    end
-		    FC = sum(s(2:N,:).*frame(2:N,:))/(2*pi*sum(frame(:,:).^2));
-		    MSF = sum(s(2:N,:).^2)/(4*(pi^2)*sum(frame(:,:).^2));
-		    VF = MSF-(FC^2);
-		    RMSF = sqrt(MSF);
-		    RVF = sqrt(VF);
-		end
-		```
+	```sh
+	function [ FC,MSF,VF,RMSF,RVF ] = frequency( frame )
+	% frequency:求出一帧信号的频域特征参数
+	% 输入参数：frame:一帧信号
+	% 输出参数： FC:重心频率
+	%           MSF:均方频率
+	%           VF:频率方差
+	%           RMSF:均方根频率
+	%           RVF:频率标准差
+	    delta = 1/48000;     % 采样间隔
+	    N = length(frame(:,1)); % 每帧信号的点数
+	    for i=2:N
+	        s(i,:) = (frame(i,:)-frame(i-1,:))/delta;
+	    end
+	    FC = sum(s(2:N,:).*frame(2:N,:))/(2*pi*sum(frame(:,:).^2));
+	    MSF = sum(s(2:N,:).^2)/(4*(pi^2)*sum(frame(:,:).^2));
+	    VF = MSF-(FC^2);
+	    RMSF = sqrt(MSF);
+	    RVF = sqrt(VF);
+	end
+	```
