@@ -323,5 +323,86 @@ categories: [科研]
 
 ![logsig](/images/logsig.png)
 
+# 画图
+
+-  plot画图
+
+	```sh
+	plot(x,y); %x y 为相应点集
+	```
+
+	```sh
+	plot(x,y1,x,y2); % 在一个窗口下绘制多条曲线之方法一
+	```
+
+	```sh
+	hold on  %在一个窗口下绘制多条曲线之方法二
+	plot(x,y1);
+	plot(x,y2);
+	hold off
+	```
+
+- plot后的相关设置
+
+	```sh
+	xlabel('x_axis_name'); %设置x y轴名称
+	ylabel('x_axis_name'); 
+	title('name'); %设置图名称
+	legend('曲线1','曲线2');  %加图例（就是加了线型后，右上角的注释）
+	grid on;  %加网格
+	```
+
+-  线型和颜色
+	- 线型（线方式）： - 实线 :点线 -. 虚点线 - - 波折线
+	- 线型（点方式）：. 圆点 +加号 * 星号 x x形 o 小圆
+	- 线条粗细：plot(x,y,'r','linewidth',4); 
+	- 参数为数据点的形状：'.'为实心黑点；'\*'为八线符；'<'为左三角；'d'为菱形；'o'为空心圆圈；'s'为方块符；'+'为十字符号；'^'为上三角符；'>'为右三角符；'h'为六角星；'p'为五角星；'x'为叉字符。
+	- 颜色： r红； g绿； b蓝； c青  m紫； k黑； w白；y黄；
+	- 例子：
+
+		```sh
+		plot(x,y1,’b:+’,x,y2,’g-.*’);
+		```
+-  加图例legend
+
+	```sh
+	legend(字符串1，字符串2，字符串3，…，参数);  %其中字符串为画图顺序依次标注
+	```
+	- 参数说明如下：
+	
+参数字符串 | 含  义
+-------- | ---
+0    | 尽量不与数据冲突，自动放置在最佳位置 
+1    | 放置在图形的右上角
+2    | 放置在图形的左上角
+3    | 放置在图形的左下角
+4    | 放置在图形的右下角
+-1  | 图形窗外
+
+-  设置背景色
+
+	```sh
+	set(gcf,'color','none'); %无背景
+	set(gcf,'color',[0,0,0]); %背景色为黑
+	set(gcf,'color',[1,1,1]); %背景色为白
+	```
 
 
+- subplot
+	- 功能:分割figure，创建子坐标系
+	- 语法
+
+		```sh
+		figure
+		h = subplot(m,n,p) or subplot(mnp)
+        subplot(m,n,p,'replace')
+        subplot(m,n,P)
+        subplot(h)
+        subplot('Position',[left bottom width height])
+        subplot(..., prop1, value1, prop2, value2, ...)
+        h = subplot(...) 
+		```
+
+	- 描述：`h = subplot(m,n,p)`或者`subplot(mnp)`将figure划分为`m×n`块，在第p块创建坐标系，并返回它的句柄。当m,n,p<10时，可以简化为subplot(mnp)或者subplot mnp 
+ 
+	> （注：subplot（m,n,p）或者subplot（mnp）此函数最常用：subplot是将多个图画到一个平面上的工具。其中，m表示是图排成m行，n表示图排成n列，也就是整个figure中有n个图是排成一行的，一共m行，如果第一个数字是2就是表示2行图。p是指你现在要把曲线画到figure中哪个图上，最后一个如果是1表示是从左到右第一个位置。 ），[参考博客](http://blog.csdn.net/steelbasalt/article/details/48918001)。
