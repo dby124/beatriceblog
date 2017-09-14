@@ -1,5 +1,5 @@
 ---
-title: MATLAB学习笔记
+title: MATLAB工具常用函数
 date: 2017-08-20 15:16:26
 tags: [MATLAB]
 categories: [科研]
@@ -248,6 +248,26 @@ a = (ismember(m:n,indzer));         % 返回的是一个元素为0或1的一个�
 all(ismember(indmax(1):indmin(1),indzer));          % 对判断的结果做或运算
 ```
 
+## 两个集合(数组)的运算
+- 取交集
+
+	```sh
+	[c, ia, ib] = intersect(A, B);   %这个函数是c返回A B的交集，ia，ib返回的是交集所在数组的指标(索引)
+	```
+
+	比如A=[2 3 4];   B=[3]; 则[c, ia, ib] = intersect(A, B);得到 c=[3]    c在数组A的指标为ia=2  同理 c在数组B的指标为ib=1。
+
+- 取差集
+
+	```sh
+	c=setxor(A,B);   % 取两个集合交集的非（异或），c返回A与B的异或，即属于A且不属于B的元素和属于B且不属于A的元素。
+	setdiff(A,B);  % 这个的意思就是A里面有的元素,而B里面没有,没有的数据顺序:从大到小(重复的数据不重复出现)
+	[c ia]= setdiff(A,B);  %  ia 的意思是 A里面的第几个元素B里面没有 这里面值得注意的是：如果A里面相同的元素B里面都没有 那么就显示最后一次的出现位置
+	[C,ia] = setdiff(A,B,'rows');  %这里是第几行不同，C表示出不同行的各个数，ia写出第几行是不同（而且特别注意的地方也是和上面那个一样） 
+	```
+	
+	> [参考文档](https://wenku.baidu.com/view/9adcff6f10a6f524ccbf85ab.html)
+
 ## 求序列的自相关和互相关。
 
 - `c = xcorr(x,y)` 返回矢量长度为2*N-1互相关函数序列，其中x和y的矢量长度均为N，如果x和y的长度不一样，则在短的序列后补零直到两者长度相等。
@@ -304,6 +324,13 @@ all(ismember(indmax(1):indmin(1),indzer));          % 对判断的结果做或�
 	```sh
 	X=[1:1:100];
 	```
+- 随机打乱一个数字序列
+
+	```sh
+	y = randperm(n);	%y是把1到n这些数随机打乱得到的一个数字序列。
+	rowrank = randperm(size(A, 1)); % 随机打乱矩阵的行数
+	```
+
 
 ## MATLAB求峭度
 - 函数法：
