@@ -62,18 +62,13 @@ DCASE2016研讨会的进程已经作为电子出版的坦佩雷理工大学系�
 
 [DCASE 2016 相关的个人文章](http://www.cs.tut.fi/sgn/arg/dcase2016/workshop-proceedings)
 
+
 # [DCASE 2017](http://www.cs.tut.fi/sgn/arg/dcase2017/)
 
 -  任务规范
 	- 1)Acoustic scene classification (Participants:35)
 	- 2)Sound event detection in synthetic audio (Participants:10
 	- 3)Sound event detection in real life audio (Participants:13)
-
--  任务规范
-	- 1)Acoustic scene classification (Participants:35)
-	- 2)Sound event detection in synthetic audio (Participants:10
-	- 3)Sound event detection in real life audio (Participants:13)
-	- 4)Domestic audio tagging (Participants:9)
 
 
 督导组
