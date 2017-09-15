@@ -33,11 +33,7 @@ categories: [科研]
 -  [中国知网](http://www.cnki.net/)
 -  [IEEE检索数据库](http://ieeexplore.ieee.org/Xplore/home.jsp)
 -  [科学网webofscience](http://apps.webofknowledge.com/UA_GeneralSearch_input.do?product=UA&search_mode=GeneralSearch&SID=4AgkJlFiewPfg7vaMcv&preferencesSaved=)
-<<<<<<< HEAD
 -  [pudn 联合开发网](pudn.com)，囊括很多源代码，但是上面的代码需要验证，不是官方的；
-=======
--  [pudn 联合开发网](pudn.com)，囊括很多源代码，但是上面的代码需要验证，不是官方的；
->>>>>>> 93b7cb8a0a49d9f6481de53a40ac647fe2c08a05
 -  [一些视频教程网站推荐](http://blog.iderzheng.com/online-video-tutorial/)
 
 ## 学校一些相关的网站：

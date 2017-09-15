@@ -8,7 +8,6 @@ categories: [知识扩展]
 hexo —— 简单、快速、强大的Node.js静态博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。
 
 ## 特性
-<<<<<<< HEAD
 
 -  风一般的速度
 Hexo基于Node.js，支持多进程，几百篇文章也可以秒生成。
@@ -153,7 +152,6 @@ Git用于把部署在GitHub的内容获取至本地，Node.js用于安装Hexo。
 
 
 ## [【Hexo+Github】域名和github绑定的问题](http://www.jianshu.com/p/1d427e888dda)
-=======
 
 -  风一般的速度
 Hexo基于Node.js，支持多进程，几百篇文章也可以秒生成。
@@ -295,4 +293,4 @@ Git用于把部署在GitHub的内容获取至本地，Node.js用于安装Hexo。
 
 
 每次更新博文并`deploy`到服务器上之后，备份就会自动启动并完成备份。
->>>>>>> 93b7cb8a0a49d9f6481de53a40ac647fe2c08a05
+

@@ -26,12 +26,8 @@ categories: [DCASE]
 　　第一个挑战赛将解决音频场景识别问题，第二个挑战赛解决识别单个声音事件的问题声场景。两个截然不同的实验将用于声音事件识别，一个用于没有重复声音的简单的声学场景中，而另一些场景使用有复调的复杂场景。在日常情境中，大多数的声音都多源的，所以复音场景会更有趣，但也更具挑战性。
 
 # 评估数据
-<<<<<<< HEAD
--  数据集
-=======
--  数据集
->>>>>>> 93b7cb8a0a49d9f6481de53a40ac647fe2c08a05
 
+-  数据集
 　　总共有**4个数据集**，**一个用于场景分类**，3个用于事件检测。第一个为现场分类(SC)挑战，将包括30秒的各种声音场景。数据集将由两个相同比例的部分组成，一个部分有10个场景，每个场景(类)有10个音频记录组成，总计每个部分的100个录音。其中一个部分将发送给参赛者用于建立并研究他们的性能。他们的系统和其他的系统将被保密，用于训练/测试场景的分类任务。场景是:
 
 ![scene_class](/images/scene_class.png)
@@ -60,15 +56,10 @@ opinion of the annotator where the offset for that event is. ）。因此，包�
 　　最后要注意的是，在训练和测试中，录音水平都是保持不变的录音和所有任务(在不控制录音条件的情况下)。
 
 # 度量
-<<<<<<< HEAD
+
 -  场景识别
 
 　　对于对声音场景进行分类，每个运行单个文件的输出只包含类标签。作为在MIREX训练/测试任务中，将计算的指标将是原始分类(标识) 准确性，每个类的规格化的分类精度，标准偏差，和一个混乱矩阵提交。对于这个测试/测试任务，将使用5倍的交叉验证来评估参与算法。
-=======
--  场景识别
-
-　　对于对声音场景进行分类，每个运行单个文件的输出只包含类标签。作为在MIREX训练/测试任务中，将计算的指标将是原始分类(标识) 准确性，每个类的规格化的分类精度，标准偏差，和一个混乱矩阵提交。对于这个测试/测试任务，将使用5倍的交叉验证来评估参与算法。
->>>>>>> 93b7cb8a0a49d9f6481de53a40ac647fe2c08a05
 
 -  事件检测
 　　对于事件检测，将进行三种类型的评估。基于框架的，基于事件的，和类的基于事件的评价。我们相信这两种方法可以对各种不同的方法进行全面的评估系统，基于事件的评估捕获整个事件检测的准确性，以及基于框架的评估提供更详细的细节，每一系统的准确性。
@@ -113,7 +104,7 @@ opinion of the annotator where the offset for that event is. ）。因此，包�
 
 ---
 # 参考文献
-<<<<<<< HEAD
+
 - [1] D.L. Wang and G. J. Brown (Eds), “Computational auditory scene analysis: Principles, algorithms and applications,” IEEE Press/WileyInterscience, 2006.
 
 - [2] [MIREX Campaign](http://www.music-ir.org/mirex)
@@ -129,23 +120,6 @@ opinion of the annotator where the offset for that event is. ）。因此，包�
 - [7] [CHIL, “FBK-Irst database of isolated meeting-room acoustic events,” European Language Resources Association](http://catalog.elra.info/product_info.php?products_id=1093,2008)
 
 - [8] [CLEAR Evaluation](http://clear-evaluation.org/)
-=======
-- [1] D.L. Wang and G. J. Brown (Eds), “Computational auditory scene analysis: Principles, algorithms and applications,” IEEE Press/WileyInterscience, 2006.
-
-- [2] [MIREX Campaign](http://www.music-ir.org/mirex)
-
-- [3] [SiSEC Evaluation](http://sisec.wiki.irisa.fr)
-
-- [4] [TRECVID 2011 MED Evaluation track](http://www.nist.gov/itl/iad/mig/med11.cf)
-
-- [5] [Albayzin 2010 Audio Segmentation and Speaker Diarization Evaluation Task](http://fala2010.uvigo.es/index.php?option=com_content&view=article&id=60\%3Aaass&catid=36&Itemid=65&lang=en)
-
-- [6] J.J. Aucouturier, B. Defreville, and F. Pachet, “The bag-of-frames approach to audio pattern recognition: a sufficient model for urban soundscapes but not for polyphonic music,” Journal of the Acoustical Society of America, Vol. 122, No. 2, pp. 881-891, 2007.
-
-- [7] [CHIL, “FBK-Irst database of isolated meeting-room acoustic events,” European Language Resources Association](http://catalog.elra.info/product_info.php?products_id=1093,2008)
-
-- [8] [CLEAR Evaluation](http://clear-evaluation.org/)
->>>>>>> 93b7cb8a0a49d9f6481de53a40ac647fe2c08a05
 
 - [9] Corey I. Cheng, and Gregory H. Wakefield, “Introduction to Head-Related Transfer Functions (HRTFs): Representations of HRTFs in Time, Frequency, and Space,” Journal Audio Eng Soc, Vol 49, No 4, 2001 April.
 [10] [SPS422B Microphone System](http://www.soundfield.com/products/sps422b.php)
@@ -157,7 +131,6 @@ opinion of the annotator where the offset for that event is. ）。因此，包�
 -  文件来源：[http://c4dm.eecs.qmul.ac.uk/sceneseventschallenge/AASP_CASA.pdf](http://c4dm.eecs.qmul.ac.uk/sceneseventschallenge/AASP_CASA.pdf)
 
 -  作者：DCASE2013的组织者(5个)
-<<<<<<< HEAD
 
 	- Dimitrios Giannoulis †
 
@@ -185,35 +158,6 @@ opinion of the annotator where the offset for that event is. ）。因此，包�
 		- 邮箱：mathieu.lagrange@ircam.fr
 
 	- Mark Plumbley †
-=======
-
-	- Dimitrios Giannoulis †
-
-		- 机构：Centre for Digital Music, **Queen Mary University of London**, Mile End Rd., London E1 4NS, UK
-		- 邮箱：dimitrios@eecs.qmul.ac.uk
-
-	- Emmanouil Benetos §
-
-		- 机构：Department of Computer Science, **City University London**, Northampton Square, London EC1V 0HB, UK
-		- 邮箱：emmanouil.benetos.1@city.ac.uk
-
-	- Dan Stowell †
-
-		- 机构：Centre for Digital Music, **Queen Mary University of London**, Mile End Rd., London E1 4NS, UK
-		- 邮箱：dans@eecs.qmul.ac.uk
-
-	- Mathias Rossignol ‡
-
-		- 机构：Sound Analysis/Synthesis Team, **IRCAM**, 1 place Igor stravinsky, 75004, Paris, France
-		- 邮箱：mathias.rossignol@gmail.com
-
-	- Mathieu Lagrange ‡ 
-
-		- 机构：Sound Analysis/Synthesis Team, [**IRCAM**](https://www.ircam.fr/), 1 place Igor stravinsky, 75004, Paris, France
-		- 邮箱：mathieu.lagrange@ircam.fr
-
-	- Mark Plumbley †
->>>>>>> 93b7cb8a0a49d9f6481de53a40ac647fe2c08a05
 
 		- 机构：Centre for Digital Music, **Queen Mary University of London**, Mile End Rd., London E1 4NS, UK
 		- 邮箱：markp@eecs.qmul.ac.uk
