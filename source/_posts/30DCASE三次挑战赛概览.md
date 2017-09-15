@@ -38,17 +38,6 @@ categories: [DCASE]
 
 -  [DCASE 2013相关的新闻与事件](http://www.eecs.qmul.ac.uk/news-and-events)
 
--  任务
-	- Task 1, Acoustic scene classification(声学场景分类)
-	- Task 2, Sound event detection, Office Live（声音事件检测，OL）
-	- Task 3, Sound event detection, Office Synthetic（声音事件检测，OS）
-
-![DCASE2013info](/images/DCASE2013info.png)
-
--  DCASE 2013挑战的结果现在在以下开放式访问期刊文章中得到充分描述：[D. Stowell, D. Giannoulis, E. Benetos, M. Lagrange, and M.D. Plumbley. Detection and classification of acoustic scenes and events. Multimedia, IEEE Transactions on, 17(10):1733–1746, Oct 2015.](http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7100934&tag=1)
-
--  [DCASE 2013相关的新闻与事件](http://www.eecs.qmul.ac.uk/news-and-events)
-
 
 # [DCASE 2016](http://www.cs.tut.fi/sgn/arg/dcase2016/)
 
