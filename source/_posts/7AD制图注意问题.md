@@ -31,6 +31,7 @@ categories: [知识扩展]
 -  覆铜设置安全距离：`Design->Rules->clearance`; 覆铜时，使铜接地，注意铜被分离，形成死铜的情况。
 
 ### 生成钻孔文件
+<<<<<<< HEAD
 -  点击PCB文件，是界面显示PCB图，另存为2.8版本，该版本文件即为钻孔文件
 
 ### 生成打印文件
@@ -40,6 +41,17 @@ categories: [知识扩展]
 -  设置
 
 	
+=======
+-  点击PCB文件，是界面显示PCB图，另存为2.8版本，该版本文件即为钻孔文件
+
+### 生成打印文件
+-  同样也是显示在PCB界面，选择
+`File->Fabrication Output->gerber file`
+
+-  设置
+
+	
+>>>>>>> 93b7cb8a0a49d9f6481de53a40ac647fe2c08a05
 		 General -> ( `milimeters` （4:4）; `inches` （2:5）)
 		
 		 layers -> ( `plot layers` (use on) ；`mirror layers` (all off) )
@@ -66,8 +78,13 @@ categories: [知识扩展]
 -  Bottom layer层方引脚、焊盘、贴片
 
 -  keep out layer层是最外边的框
+<<<<<<< HEAD
 
 -  最后，记得给PCB设置原点，用以定位：`Edit( 编辑)->Origin->set`
+=======
+
+-  最后，记得给PCB设置原点，用以定位：`Edit( 编辑)->Origin->set`
+>>>>>>> 93b7cb8a0a49d9f6481de53a40ac647fe2c08a05
 
 -  焊盘直径可尽量设置的大些，方便焊接，线宽也要设置的宽，线不能是直角，否则形成天线，干扰特别大。
 

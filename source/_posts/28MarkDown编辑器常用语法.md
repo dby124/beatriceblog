@@ -17,7 +17,11 @@ ___
 
 > 如果上面的符号是紧挨着上文的文字，就是细线，否则就是上面显示的粗线。
 
+<<<<<<< HEAD
 # 图片链接
+=======
+# 图片链接
+>>>>>>> 93b7cb8a0a49d9f6481de53a40ac647fe2c08a05
 
 -  `![图片的名称](图片的本地连接或网络连接)`，如：`![markdown_fontcolor](/images/markdown_fontcolor.png)`
 
@@ -38,6 +42,7 @@ ___
 
 ![markdown_fontcolor](/images/markdown_fontcolor.png)
 
+<<<<<<< HEAD
 # 表格
 
 	```sh
@@ -58,3 +63,25 @@ ___
 
 # 注释
 `<!-- 注释 -->`,加上HTML的注释符号，其中的内容在网页中不会显示。
+=======
+# 表格
+
+	```sh
+	| Tables        | Are           | Cool  |
+	| ------------- |:-------------:| -----:|
+	| col 3 is      | right-aligned | $1600 |
+	| col 2 is      | centered      |   $12 |
+	| zebra stripes | are neat      |    $1 |
+	```
+
+	```sh
+	项目     | 价格
+	-------- | ---
+	Computer | $1600
+	Phone    | $12
+	Pipe     | $1
+	```
+
+# 注释
+`<!-- 注释 -->`,加上HTML的注释符号，其中的内容在网页中不会显示。
+>>>>>>> 93b7cb8a0a49d9f6481de53a40ac647fe2c08a05
