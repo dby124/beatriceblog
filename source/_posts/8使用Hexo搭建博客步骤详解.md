@@ -121,6 +121,8 @@ Git用于把部署在GitHub的内容获取至本地，Node.js用于安装Hexo。
 ### 安装主题
 可以到[Hexo官网主题页](https://hexo.io/themes/)去搜寻自己喜欢的theme。我安装的是[hexo-theme-next](http://theme-next.iissnan.com/)。
 
+[hexo的next主题个性化教程:打造炫酷网站](http://shenzekun.cn/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B.html)
+
 ### 发布文章
 1） 新建文章
 
