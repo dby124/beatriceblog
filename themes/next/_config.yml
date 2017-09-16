@@ -682,3 +682,7 @@ images: images
 
 # Theme version
 version: 5.1.2
+
+# 文章末尾添加“本文结束”标记
+passage_end_tag:
+  enabled: true
