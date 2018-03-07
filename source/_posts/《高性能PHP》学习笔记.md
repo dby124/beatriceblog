@@ -7,7 +7,7 @@ categories: [PHP]
 
 本文主要是阅读PHP做的学习笔记，以便查阅。
 
-#简介
+# 简介
 《高性能PHP 7》从PHP所需环境讲起，涉及环境搭建与配置设置等内容，能够帮助有一定计算机基础的读者实现PHP运行环境的搭建及PHP周边软件的安装配置。《高性能PHP 7》亮点内容是介绍PHP 7特性的部分，同时也告诉读者哪些语法将会被废弃，对读者上手PHP 7有极大的帮助。除介绍PHP 7的新特性外，《高性能PHP 7》用大量章节介绍如何使用PHP 7及周边软件来构造高性能的Web应用程序，同时介绍了一些PHP开发的最佳实践，帮助读者更好地理解Web项目与PHP应用程序开发。附录部分为读者介绍了一些不错的工具，讲解了MVC与开发框架等周边知识，能够帮助读者更好地开发PHP项目。
 
 # 环境搭建
@@ -55,6 +55,7 @@ categories: [PHP]
 	- 返回值声明：类似于形参声明，注意类型也可以是某个类的对象,例如：`public function age(int $age) : string { // 函数体}`
 	
 - 命名空间与use关键字批量声明
+
 	当代码量规模变大时，很多类会放在命名空间下，这样方便维护和管理。然而当出现一个命名空间下有很多类且我们要一个性使用多个类的情况下，我们不得不直接将它们声明在代码的顶部。在命名空间下声明类如下所示：
 
 	```sh
@@ -64,43 +65,47 @@ categories: [PHP]
 	$Presentation = new Publichers\Packt\Presentation();
 	```
 	
-	**加载类的方式**有两种：
-	- 通过`include`声明显示要加载的类。
-	- 通过`_autoload`函数来加载所有的类文件。
+
+	> **加载类的方式**有两种：
+
+	> - 通过`include`声明显示要加载的类。
+	> - 通过`_autoload`函数来加载所有的类文件。
 
 	现在换一种方法，可以增加代码的可读性，PHP 7引入批量的**use声明**，其中包括三种声明模式：
+
 	- 非混合模式的use声明
 	 
-		```sh
-		use Publichers\Packt\{ Book, Ebook, Video, Presentation };
-		use function Publichers\Packt\{ getBook ,savebook };
-		use const Publichers\Packt\{ COUNT,KEY };
-		```
+	```sh
+	use Publichers\Packt\{ Book, Ebook, Video, Presentation };
+	use function Publichers\Packt\{ getBook ,savebook };
+	use const Publichers\Packt\{ COUNT,KEY };
+	```
 
 	- 混合模式的use声明
-		 
-		```sh
-		use Publichers\Packt\{ 
-			Book, 
-			Ebook, 
-			Video, 
-			Presentation, 
-			function getBook;
-			function saveBook;
-			const COUNT,
-			const KEY
-		};
-		```
+	 
+	```sh
+	use Publichers\Packt\{ 
+		Book, 
+		Ebook, 
+		Video, 
+		Presentation, 
+		function getBook;
+		function saveBook;
+		const COUNT,
+		const KEY
+	};
+	```
+
 	- 复合模式的use声明
 		 
-		```sh
-		use Publichers\Packt\{ 
-			Paper\Book, 
-			Electronic\Ebook, 
-			Media\Video, 
-			Media\Presentation
-		};
-		```
+	```sh
+	use Publichers\Packt\{ 
+		Paper\Book, 
+		Electronic\Ebook, 
+		Media\Video, 
+		Media\Presentation
+	};
+	```
 
 	**匿名类**的声明与使用同时进行，它具备其他类所具备的所有功能，差别在于匿名类没有类名。匿名类的一次性小任务代码流程对性能提升帮助很大，你不必将整个类写完后再使用它。匿名类的语法如下：
 
@@ -113,6 +118,7 @@ categories: [PHP]
 		}
 	};
 	```
+
 	> 虽然匿名类是没有命名的，但是PHP内部，会在内存的引用地址表中为其分配一个全局唯一的名称。匿名类在继承方面与命名类相同，一样可以继承父类及父类的方法和接口，方式与继承命名类相同。
 
 
