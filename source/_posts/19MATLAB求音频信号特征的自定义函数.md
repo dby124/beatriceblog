@@ -271,3 +271,6 @@ categories: [科研]
 	    RVF = sqrt(VF);
 	end
 	```
+
+
+参考：[音频特征提取——常用音频特征](https://www.cnblogs.com/xingshansi/p/6815217.html)
