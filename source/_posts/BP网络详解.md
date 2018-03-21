@@ -47,7 +47,7 @@ BP网络是典型的多层网络结构，而多层网络可以解决很多单层
 	- **输入层**：输入层的神经元个数输入训练集的特征向量的维度。
 	- **隐含层**
  
-	<img src="./images/隐含层神经元个数.png" width = "300" height = "200" alt="隐含层神经元个数" align=center />
+	<img src="/images/隐含层神经元个数.png" width = "300" height = "200" alt="隐含层神经元个数" align=center />
 
 		![隐含层神经元个数](/images/隐含层神经元个数.png)
 
