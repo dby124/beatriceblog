@@ -1,5 +1,5 @@
 ---
-title: Python相关的概念
+title: dcase_unit教程
 date: 2018-03-26 11:31:53
 tags: [python]
 categories: [DCASE]
