@@ -1,3 +1,11 @@
+---
+title: Python相关的概念
+date: 2018-03-26 11:31:53
+tags: [python]
+categories: [科研]
+---
+
+
 关于音频场景识别的一个基于python的程序合集dcase_unit，是英文的，所以在此将其翻译成了中文，以便查阅。
 
 [dcase_unit](https://dcase-repo.github.io/dcase_util)文档描述了为声场景和事件检测和分类（DCASE）创建的实用程序集合。这些实用程序最初是为DCASE挑战基线系统（2016和2017）创建的，并捆绑到独立库中以允许其在其他研究项目中重复使用。
