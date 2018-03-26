@@ -1,17 +1,16 @@
 ---
 title: C++初始编程及相关的问题总结
 date: 2017-09-27 09:16:53
-tags: [python]
-categories: [科研]
+tags: [C++]
+categories: [知识扩展]
 ---
-这篇文章是根据之前
-完成的“数字信号处理器”这门课的作业
+这篇文章是根据之前完成的“数字信号处理器”这门课的作业
 
 ## 运行环境及建工程步骤
 
 - 创建工程项目：
 
-Visual Studio（VS）后，点击菜单栏第一个键，`文件` -> `新建`-> `项目`-> `设置项目名称以及存储位置`-> `选择Win32控制台应用程序`-> 勾选“`为解决方案创建目录`”-> `下一步`-> `下一步`-> 勾选“`空项目`”-> `完成`。
+	Visual Studio（VS）后，点击菜单栏第一个键，`文件` -> `新建`-> `项目`-> `设置项目名称以及存储位置`-> `选择Win32控制台应用程序`-> 勾选“`为解决方案创建目录`”-> `下一步`-> `下一步`-> 勾选“`空项目`”-> `完成`。
 
 - 更新VS2010，或者卸载VS2012安装2010后，建立Win32 Console Project/MFC项目时会出现"LINK : fatal error LNK1123: 转换到 COFF 期间失败: 文件无效或损坏"的错误。
 解决方案：
@@ -44,11 +43,11 @@ Visual Studio（VS）后，点击菜单栏第一个键，`文件` -> `新建`-> 
 
    源文件（.cpp）：主要写实现头文件中已经声明的那些函数的具体代码。需要注意的是，开头必须#include一下实现的头文件，以及要用到的头文件。那么当你需要用到自己写的头文件中的类时，只需要#include进来就行了。**工程中只能有一个main()函数，是应用程序的入口**。
 
-> 虽说头文件可以用来保存任意代码片段，但典型的做法是只用它们来保存函数声明、用户自定义类型数据（结构和类）、模板和全局性的常量。
+	> 虽说头文件可以用来保存任意代码片段，但典型的做法是只用它们来保存函数声明、用户自定义类型数据（结构和类）、模板和全局性的常量。
 
-如果你有一个程序需要多次调用一个或一组函数，或是你有一个或一组函数需要在多个程序里调用，就应该把它们的声明拿出来放到一个头文件里。
-
-头文件应该只包含最必要的代码，比如只声明一个类或只包含一组彼此相关的函数。把接口（函数的原型）和实现（函数体的定义）分开是对代码进行模块化的基本原则之一。
+	如果你有一个程序需要多次调用一个或一组函数，或是你有一个或一组函数需要在多个程序里调用，就应该把它们的声明拿出来放到一个头文件里。
+	
+	头文件应该只包含最必要的代码，比如只声明一个类或只包含一组彼此相关的函数。把接口（函数的原型）和实现（函数体的定义）分开是对代码进行模块化的基本原则之一。
 
 ## C++编程中遇到的一些问题
 
@@ -63,8 +62,8 @@ Visual Studio（VS）后，点击菜单栏第一个键，`文件` -> `新建`-> 
 
 - 在<float.h>中定义了浮点类型的范围：
 	```sh
-	\#define DBL_MAX 1.7976931348623158e+308 /* max value */
-	\#define DBL_MIN 2.2250738585072014e-308 /* min positive value */
+	#define DBL_MAX 1.7976931348623158e+308 /* max value */
+	#define DBL_MIN 2.2250738585072014e-308 /* min positive value */
 	```
 
 - 给C++的一维数组赋初值，只有在定义的时候可以整体初始化，
@@ -74,7 +73,7 @@ Visual Studio（VS）后，点击菜单栏第一个键，`文件` -> `新建`-> 
        temp[0] = arr1[0];
        temp[1] = arr1[2];  
 	```
-应该为：
+	应该为：
 	```sh
        int temp[2];
        temp[0] = arr1[0];
@@ -117,30 +116,30 @@ Visual Studio（VS）后，点击菜单栏第一个键，`文件` -> `新建`-> 
 
 - C++动态内存分配：
 
-`delete[] mi;`// 由于mi是静态存储分配，不需要手动释放内存，如果加这两句可能会陷入程序不运行的状态。
-
-```sh
-// 使用new构建并初始化二维数组
-float**  create_array(int row, int col){
-       float** p = new float*[row];
-       for (int i = 0; i < row; ++i) {
-              p[i] = new float[col];
-              for (int j = 0; j < col; ++j) {
-                     p[i][j] = 0;
-              }
-       }
-       return p;
-}
-// 初始化二维数组
-template<typename T>
-void init_array(T&& arr, int row, int col){
-       for (int i = 0; i < row; ++i) {
-              for (int j = 0; j < col; ++j) {
-                     arr[i][j] = 0;
-              }
-       }
-}
-```
+	`delete[] mi;`// 由于mi是静态存储分配，不需要手动释放内存，如果加这两句可能会陷入程序不运行的状态。
+	
+	```sh
+	// 使用new构建并初始化二维数组
+	float**  create_array(int row, int col){
+	       float** p = new float*[row];
+	       for (int i = 0; i < row; ++i) {
+	              p[i] = new float[col];
+	              for (int j = 0; j < col; ++j) {
+	                     p[i][j] = 0;
+	              }
+	       }
+	       return p;
+	}
+	// 初始化二维数组
+	template<typename T>
+	void init_array(T&& arr, int row, int col){
+	       for (int i = 0; i < row; ++i) {
+	              for (int j = 0; j < col; ++j) {
+	                     arr[i][j] = 0;
+	              }
+	       }
+	}
+	```
 > 参考：（1）[C++ 动态内存分配（6种情况，好几个例子）](http://www.cnblogs.com/findumars/p/5272691.html)（2）[C++ 内存分配秘籍—new，malloc，GlobalAlloc详解](https://blog.csdn.net/feidongyizhong/article/details/6325779)（分析详细易懂）
 
 - 调试

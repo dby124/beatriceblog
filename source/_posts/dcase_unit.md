@@ -2,7 +2,7 @@
 title: Python相关的概念
 date: 2018-03-26 11:31:53
 tags: [python]
-categories: [科研]
+categories: [DCASE]
 ---
 
 
