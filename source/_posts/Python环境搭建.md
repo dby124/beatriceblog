@@ -1,5 +1,5 @@
 ---
-title: Python相关的概念
+title: Python环境搭建
 date: 2017-09-27 09:16:53
 tags: [python]
 categories: [科研]
@@ -56,9 +56,9 @@ Python由Guido van Rossum于1989年底发明，第一个公开发行版发行于
 
 		- 在此处，scipy对应的安装包（请替换为你的可安装版本）。scipy依赖于numpy+mkl，安装scipy前需要先安装好numpy+mkl。通过whl安装库的方法如下：
 
-		- 安装`numpy+mkl`：进入whl文件下载到的文件夹位置，按住shift键的同时，点击鼠标右键，在弹出菜单中选择“在此处打开命令窗口”,输入`pip install numpy-1.13.3+mkl-cp27-cp27m-win_amd64.whl`（注意将文件名替换为你的可用版本的名称），按Enter后，等待安装完成。
-
-		- 安装scipy，输入`pip install scipy-0.19.1-cp27-cp27m-win_amd64.whl`（注意将文件名替换为你的可用版本的名称），按Enter后，等待安装完成。
+			- 安装`numpy+mkl`：进入whl文件下载到的文件夹位置，按住shift键的同时，点击鼠标右键，在弹出菜单中选择“在此处打开命令窗口”,输入`pip install numpy-1.13.3+mkl-cp27-cp27m-win_amd64.whl`（注意将文件名替换为你的可用版本的名称），按Enter后，等待安装完成。
+	
+			- 安装scipy，输入`pip install scipy-0.19.1-cp27-cp27m-win_amd64.whl`（注意将文件名替换为你的可用版本的名称），按Enter后，等待安装完成。
 
 	> 参考:[Windows下安装python的scipy等科学计算包](http://jingyan.baidu.com/article/ca41422f27c56a1eae99ed39.html)
 
