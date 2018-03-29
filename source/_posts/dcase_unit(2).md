@@ -5,7 +5,7 @@ tags: [python]
 categories: [DCASE]
 ---
 
-接着上一篇教程，继续的hi各个UTILITIES的介绍。[网址](https://dcase-repo.github.io/dcase_util/index.html)
+接着上一篇教程，继续的有各个UTILITIES的介绍。[网址](https://dcase-repo.github.io/dcase_util/index.html)
 
 ## 1. Container
 
@@ -1362,7 +1362,7 @@ class dcase_util.features.FeatureExtractor(fs=44100, win_length_samples=None, ho
 ## 7. Keras utilities
 使用Keras深度学习库的单元。
 
-## 7.1 Model
+### 7.1 Model
 `dcase_util.keras.model`。*
 
 类名 | 功能
@@ -1371,7 +1371,7 @@ class dcase_util.features.FeatureExtractor(fs=44100, win_length_samples=None, ho
 `model_summary_string(keras_model)` | 字符串中的模型摘要，类似于Keras模型摘要函数。
 
 
-## 7.2 Callbacks
+### 7.2 Callbacks
 用法示例如何将外部度量与dcase_util提供的Callback类一起使用：
 
 ```
@@ -1504,7 +1504,7 @@ for epoch_start in range(0, epochs, processing_interval):
 `BaseCallback([epochs, manual_update, ...])` | 	回调基础类
 
 
-## 7.3 Utils
+### 7.3 Utils
 `dcase_util.keras.utils`. *
 
 类名 | 功能
