@@ -76,7 +76,7 @@ from IPython import embed
 
 > 建议首先使用`%quickref`。这个命令以%开头。**所有以%开头的方法，都是所谓的魔术方法(Magic function)，也就是ipython内置的一些方法**。需注意：魔术方法有`%`和`%%`之分，`%`叫line magic（专门针对一行的命令）,如`%timeit`；`%%`叫cell magic（针对多行的命令），如`%%timeit`。所有的魔术方法都可以查看源码，仔细阅读的话，对自己写代码也很有裨益，具体方法是在魔术方法后面加??，譬如%timeit??。
 
-## 5. python中导入第三方库时，报错：计算机中丢失`MSVCP140.dll`
+## 5. 运行python代码，报错：计算机中丢失`MSVCP140.dll`
 
 解决方法是安装了一个VC++运行库，由于电脑是64位的，64位VC++运行库：[Visual C++ Redistributable for Visual Studio 2015下载地址](https://www.microsoft.com/zh-cn/download/confirmation.aspx?id=48145)，安装完成之后这个问题就解决了。
 
@@ -103,4 +103,27 @@ for line in demo:
 print(line)  
 ```
 
-## 7.
+## 7. Python升级已经安装的第三方库
+
+主要两步操作，查看需要升级库，升级库。如下：
+
+```
+pip list # 列出安装的库
+pip list --outdated # 列出有更新的库
+pip install --upgrade library_name # 升级库library_name
+```
+
+> 升级时将library_name替换为需要升级的库即可。如果在环境中同时安装了python3，应该替换为pip3命令。
+
+## 8. 当我在dcase_unit中运行示例时，evaluation部分中名为sed_eval的模块无法找到。
+
+报错如下：
+
+```
+Traceback (most recent call last):
+File "D:/py_code/firstpython/venv/first_python/test.py", line 4, in 
+	import sed_eval
+ImportError: No module named sed_eval
+```
+
+尝试从示例代码中发现`sed_eval`不依赖与dcase_unit，是一个独立的模块，所以在命令窗口中尝试输入命令`pip install sed_eval`，通过pip查找安装这个模块，最后发现安装成功。
