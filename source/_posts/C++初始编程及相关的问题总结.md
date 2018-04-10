@@ -153,4 +153,26 @@ categories: [知识扩展]
 sprintf_s(t, "result/FJ_%d_%d_%d_%d.txt", FEATURE_NUM, FEATURE_SUB_NUM,1,5);
 ```
 
+- 输入字符串，转化为数组，并统计字符个数：
+
+	```
+	#include<iostream>
+	#include<string>
+	using namespace std;
+	int main() {
+		// 输入数据
+		string s1;
+		char temp;
+		while((temp=cin.get())!='\n') {
+			s1 +=temp;
+		}
+		const int LEN =s1.length();
+		char* s = new char[LEN];//根据输入字符串的长度，创建字符数组 
+		for(int i = 0;i<LEN;i++){  //将字符串保存到字符数组中 
+			s[i]=s1[i];
+		}
+	    cout<<LEN<<endl;
+		return 0;
+	}
+	```
 
