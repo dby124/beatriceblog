@@ -5,7 +5,7 @@ tags: [cookie&session]
 categories: [PHP]
 ---
 
-会话管理包括：Session和Cookie，主要功能都是把客户户端和服务器关联起来，用于管理和查看用户在网站中的状态。
+会话管理包括：Session和Cookie，主要功能都是把客户端和服务器关联起来，用于管理和查看用户在网站中的状态。
 
 ## 背景
 
@@ -34,15 +34,15 @@ Cookie意为“甜饼”，是由W3C组织提出，最早由Netscape社区发展
 **Cookie的工作原理**：由于HTTP是一种无状态的协议，服务器单从网络连接上无从知道客户身份。怎么办呢？就给客户端们颁发一个通行证吧，每人一个，无论谁访问都必须携带自己通行证。这样服务器就能从通行证上确认客户身份了。
 
 
-**Set-Cookie 和 Cookie**：两个专门负责设置以及发送cookie的++http头部++。
+**Set-Cookie 和 Cookie**：两个专门负责设置以及发送cookie的http头部。
 
 **Cookie工作流程**：
 
-Cookie实际上是一小段的文本信息。（1）整个客户端请求服务器，（2）如果服务器需要记录该用户状态，则通过服务器返回给客户端一个包含Set-Cookie这个头部的++http响应++来指示客户端建立一个cookie。客户端浏览器会把Cookie保存起来，直到这个cookie过期。（3）当浏览器再请求该网站时，浏览器把请求的网址连同该Cookie一同提交给服务器。（4）服务器检查该Cookie，以此来辨认用户状态，然后响应请求。注意：服务器还可以根据需要修改Cookie的内容。一个cookie的设置以及发送过程分为以下四步：
+Cookie实际上是一小段的文本信息。（1）整个客户端请求服务器，（2）如果服务器需要记录该用户状态，则通过服务器返回给客户端一个包含Set-Cookie这个头部的http响应来指示客户端建立一个cookie。客户端浏览器会把Cookie保存起来，直到这个cookie过期。（3）当浏览器再请求该网站时，浏览器把请求的网址连同该Cookie一同提交给服务器。（4）服务器检查该Cookie，以此来辨认用户状态，然后响应请求。注意：服务器还可以根据需要修改Cookie的内容。一个cookie的设置以及发送过程分为以下四步：
 
 ![http_cookie](/images/http_cookie.png)
 
-> setcookie() 定义一个和其余的 HTTP 标头一起发送的 cookie。和其它标头一样，++cookie 必须在脚本的任何其它输出之前发送++（这是协议限制）。这需要将本函数的调用放到任何输出之前，包括 &amp;lt;html&amp;gt; 和 &amp;lt;head&amp;gt; 标签以及任何空格。如果在调用 setcookie() 之前有任何输出，本函数将失败并返回 FALSE。++因此必须在发送任何HTML(必须位于 <html> 标签之前)、文本信息前调用session_start() 函数++。 
+> setcookie() 定义一个和其余的 HTTP 标头一起发送的 cookie。和其它标头一样，cookie 必须在脚本的任何其它输出之前发送（这是协议限制）。这需要将本函数的调用放到任何输出之前，包括 &amp;lt;html&amp;gt; 和 &amp;lt;head&amp;gt; 标签以及任何空格。如果在调用 setcookie() 之前有任何输出，本函数将失败并返回 FALSE。因此必须在发送任何HTML(必须位于 <html> 标签之前)、文本信息前调用session_start() 函数。 
 
 
 - **Cookie的限制：**
@@ -54,10 +54,10 @@ Cookie实际上是一小段的文本信息。（1）整个客户端请求服务�
 - **创建Cookie**：setcookie(变量名，变量值，过期时间，在服务器上的有效路径，boolean是否通过安全的HTTPS链接传送);
     - Cookie不会在设置本页生效，在测试时，要在Cookie过期之前，通过另外一个页面来访问。
     - 工作时间：
-        - 不设置过期时间：重新打开浏览器则失效；表示这个cookie生命周期为浏览器会话期间，只要关闭浏览器窗口，cookie就消失了。这种生命期为浏览会话期的cookie被称为++会话cookie++。
+        - 不设置过期时间：重新打开浏览器则失效；表示这个cookie生命周期为浏览器会话期间，只要关闭浏览器窗口，cookie就消失了。这种生命期为浏览会话期的cookie被称为**会话cookie**。
         - time（）+ n秒数：设定过n秒后Cookie失效；
         - mktime（时，分，秒，月，日，年），设定为到规定时间失效；
-        > ++会话cookie++一般不保存在硬盘上而是保存在**内存**里。如果设置了过期时间，浏览器就会把cookie保存到**硬盘**上，关闭后再次打开浏览器，这些cookie依然有效直到超过设定的过期时间。
+        > **会话cookie**一般不保存在硬盘上而是保存在**内存**里。如果设置了过期时间，浏览器就会把cookie保存到**硬盘**上，关闭后再次打开浏览器，这些cookie依然有效直到超过设定的过期时间。
 
 
 - **Cookie的有效期**：Cookie的maxAge决定着Cookie的有效期，单位为秒（Second）。Cookie中通过getMaxAge()方法与setMaxAge(int maxAge)方法来读写maxAge属性。
@@ -81,13 +81,13 @@ Cookie实际上是一小段的文本信息。（1）整个客户端请求服务�
 - **Cookie数组**：将cookie各个变量联系起来，组成数组，利用$_COOKIE[’cookie‘]输出。Cookie对象使用key-value属性对的形式保存用户状态，一个Cookie对象保存一个属性对，一个request或者response同时使用多个Cookie。
 
 - **提高Cookie安全性**的方法有：
-    - ++设置HttpOnly为true++。该属性值的作用就是防止Cookie值被页面脚本读取。
+    - **设置HttpOnly为true**。该属性值的作用就是防止Cookie值被页面脚本读取。
     > 但是设置HttpOnly属性，HttpOnly属性只是增加了攻击者的难度，Cookie盗窃的威胁并没有彻底消除，因为cookie还是有可能传递的过程中被监听捕获后信息泄漏。
 
-    - ++设置Secure为true++。给Cookie设置该属性时，只有在https协议下访问的时候，浏览器才会发送该Cookie。
+    - **设置Secure为true**。给Cookie设置该属性时，只有在https协议下访问的时候，浏览器才会发送该Cookie。
     > 把cookie设置为secure，只保证cookie与WEB服务器之间的数据传输过程加密，而保存在本地的cookie文件并不加密。如果想让本地cookie也加密，得自己加密数据。
 
-    - ++给Cookie设置有效期++。
+    - **给Cookie设置有效期**。
 
 特性：
 - **Cookie不提供修改、删除操作**。如果要修改某个Cookie，只需要新建一个同名的Cookie，添加到response中覆盖原来的Cookie。如果要删除某个Cookie，只需要新建一个同名的Cookie，并将maxAge设置为0，并添加到response中覆盖原来的Cookie。
@@ -131,7 +131,7 @@ Session的超时时间也可以在web.xml中修改。另外，通过调用Sessio
 
 **Session对浏览器的要求**
 
-Session保存在服务器，对客户端是透明的。由于++Session需要使用Cookie作为识别标志++，它的正常运行仍然需要客户端浏览器的支持。Session依据Cookie来识别是否为同一用户。该Cookie为服务器自动生成的，它的maxAge属性一般为–1，表示仅当前浏览器内有效，并且各浏览器窗口间不共享，关闭浏览器就会失效。
+Session保存在服务器，对客户端是透明的。由于**Session需要使用Cookie作为识别标志**，它的正常运行仍然需要客户端浏览器的支持。Session依据Cookie来识别是否为同一用户。该Cookie为服务器自动生成的，它的maxAge属性一般为–1，表示仅当前浏览器内有效，并且各浏览器窗口间不共享，关闭浏览器就会失效。
 
 > 注意：新开的浏览器窗口会生成新的Session，但子窗口除外。子窗口会共用父窗口的Session。例如，在链接上右击，在弹出的快捷菜单中选择“在新窗口中打开”时，子窗口便可以访问父窗口的Session。
 

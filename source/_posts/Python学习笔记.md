@@ -150,7 +150,7 @@ def function_name (parameters):
 ```
 > 注意在类的内部，使用def关键字可以为类定义一个函数（方法），与一般函数定义不同，**类方法必须包含参数self,且为第一个参数**！
 
-## 10. [python的可变参数和关键字参数(*args **kw)](https://blog.csdn.net/sanbingyutuoniao123/article/details/56016008)
+## 10. [python的可变参数和关键字参数(\*args \**kw)](https://blog.csdn.net/sanbingyutuoniao123/article/details/56016008)
 
 - `*args`是可变参数，args接收的是一个**tuple**；
 - `**kw`是关键字参数，kw接收的是一个**dict**。
