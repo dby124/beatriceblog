@@ -154,7 +154,7 @@ HTML是一种标记语言，组成HTML语法的元素有**HTML标签和HTML属�
 ```
 效果：
 
-![html_form](/images/html_form.png)
+![html_form](/images/html_form1.png)
 
 ### 表格设计
 
