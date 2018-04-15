@@ -210,3 +210,55 @@ class Airplane(Vehicle, PlaneMixin):
     pass
 ```
 > 扩展：ReactJS也有Mixin功能，且语法很简洁。参考[关于Python的Mixin模式](https://www.cnblogs.com/aademeng/articles/7262520.html)
+
+## 13. python中super用法
+在python中引入super()的目的是保证相同的基类只初始化一次.
+
+**使用格式**：
+
+```
+super(AudioContainer, self).__init__(**kwargs)
+```
+
+**使用的注意点**：
+
+- super()是一个类名而非函数，super(class, self)事实上调用了super类的初始化函数，产生了一个super对象；
+- super()机制是用来解决多重继承的，对于直接调用父类名是没有问题的，但根据前人的经验：要么都用类名调用，要么就全部用super()，不要混合的用。混用super类和非绑定的函数是一个危险行为，这可能导致应该调用的父类函数没有调用或者一个父类函数被调用多次。
+- super()继承只能用于派生类，用于基类时就会报错。
+
+**super( )小结**：
+
+- B类继承A类，在B类自己的基础上可以调用A类所有的方法。
+- A、B同时拥有__init__，B会改写A中的__init__方法，A类的方法失效。
+- super函数可以调用A父类中的属性，B类中有同名属性时，覆盖A类中的同名属性。调用函数时总是先查找B自身的定义，如果没有定义，则顺着继承链向上查找，直到在某个父类中找到为止。
+- B类__init__参数需大于或等于A父类的__init__方法，因为super初始化了，参数量为父类参数量。
+- super函数原理：super().__init__(xxx,xxx)中的xxx参数为类B中输入的参数，但与类A中参数名相对应，即B类输入参数位置会初始化A类中对应位置的参数。详见:[Python super初始化理解过程](https://www.cnblogs.com/HoMe-Lin/p/5745297.html)的小结（5）。
+- 单继承时super()和__init__()实现的功能是类似的，使用super()继承时不用显式引用基类。
+
+> 此处设A是基类，B继承A类。super()避免重复调用。super（）的第一个参数可以是继承链中任意一个类的名字
+
+## 14. Python的魔法方法(magic method)：\_\_str\_\_和\_\_repr\_\_
+
+**魔法方法**就是可以给你的类增加魔力的特殊方法，如果你的对象实现了这些方法中的某一个，那么这个方法就会在特殊的情况下被 Python 所调用，你可以定义自己想要的行为，而这一切都是自动发生的。它们经常是两个下划线包围来命名的（比如 __init__/__new__等等），Python的魔法方法是非常强大的。参考：[Python魔法方法指南](https://zhuanlan.zhihu.com/p/26488074?refer=passer)
+
+若要把一个类的实例变成 str，就需要实现特殊方法\_\_str\_\_()。
+
+Python 定义了\_\_str\_\_()和\_\_repr\_\_()两种方法\_\_str\_\_()用于显示给用户，而\_\_repr\_\_()用于显示给开发人员。
+
+```
+class Person(object):
+    def __init__(self, name, gender):
+        self.name = name
+        self.gender = gender
+class Student(Person):
+    def __init__(self, name, gender, score):
+        super(Student, self).__init__(name, gender)
+        self.score = score
+    def __str__(self):
+        return '(Student: %s, %s, %s)' % (self.name, self.gender, self.score)
+    __repr__ = __str__
+s = Student('Bob', 'male', 88)	# 返回字符
+print s
+```
+
+> 其实\_\_str\_\_相当于是str()方法 而\_\_repr\_\_相当于repr()方法。str是针对于让人更好理解的字符串格式化，而repr是让机器更好理解的字符串格式化。
