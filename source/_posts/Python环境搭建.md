@@ -91,6 +91,8 @@ General Options:
   --cert <path>               证书.
 ```
 
+> 在安装某些第三库前，由于依赖其他的库，需要安装其他库之后才能安装。一般这些依赖的第三方库的信息会存在一个命名为`requirements.txt`的文件，此时只需要在文件所在目录打开cmd命令窗口，输入cmd命令：`pip install -r requirements.txt`，即可开始安装。
+
 # python中怎样转到指定目录
 
 ```sh

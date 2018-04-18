@@ -1,5 +1,5 @@
 ---
-title: dcase_unit教程（二）——各单元介绍
+title: dcase_util教程（二）——各单元介绍
 date: 2018-03-26 18:16:38
 tags: [python]
 categories: [DCASE]

@@ -1,18 +1,18 @@
 ---
-title: dcase_unit教程
+title: dcase_util教程
 date: 2018-03-26 11:31:53
 tags: [python]
 categories: [DCASE]
 ---
 
 
-关于音频场景识别的一个基于python的程序合集dcase_unit，是英文的，所以在此将其翻译成了中文，以便查阅。
+关于音频场景识别的一个基于python的程序合集dcase_util，是英文的，所以在此将其翻译成了中文，以便查阅。
 
-[dcase_unit](https://dcase-repo.github.io/dcase_util)文档描述了为声场景和事件检测和分类（DCASE）创建的实用程序集合。这些实用程序最初是为DCASE挑战基线系统（2016和2017）创建的，并捆绑到独立库中以允许其在其他研究项目中重复使用。
+[dcase_util](https://dcase-repo.github.io/dcase_util)文档描述了为声场景和事件检测和分类（DCASE）创建的实用程序集合。这些实用程序最初是为DCASE挑战基线系统（2016和2017）创建的，并捆绑到独立库中以允许其在其他研究项目中重复使用。
 
 这些实用程序的主要目标是简化研究代码，使其更易读，更易于维护。大多数实施的实用程序都与音频数据集相关：处理元数据和各种形式的其他结构化数据，并为各种来源的音频数据集提供标准化的使用API。
 
-dcase_unit中包含的概念有：
+dcase_util中包含的概念有：
 
 - Dataset：一组音频信号和与之相关的参考标注。
 - Container：类存储数据并基于要存储的数据类型，提供有意义且清晰的数据访问。
@@ -22,7 +22,7 @@ dcase_unit中包含的概念有：
 - Processor：为处理数据提供统一API的类。
 - ProcessingChain：在一个链中连接多个数据处理器，允许构建数据的复杂处理。
 
-在搭建好了python环境之后，使用下列pip命令安装dcase_unit。
+在搭建好了python环境之后，使用下列pip命令安装dcase_util。
 ```
 pip install dcase_util
 ```

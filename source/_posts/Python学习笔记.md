@@ -262,3 +262,20 @@ print s
 ```
 
 > 其实\_\_str\_\_相当于是str()方法 而\_\_repr\_\_相当于repr()方法。str是针对于让人更好理解的字符串格式化，而repr是让机器更好理解的字符串格式化。
+
+
+## 15. 画图
+
+```
+import matplotlib.pyplot as plt
+plt.plot(t, x)  
+# plt.plot(x, s1, 'b', x, s2, 'g', x, s3, 'r')
+
+# 若要新打开一个图窗口，调用figure()函数
+plt.figure()
+plt.plot(np.real(h), np.imag(h), 'b')
+
+plt.show()
+```
+
+参考：[Python--matplotlib绘图可视化知识点整理](https://www.cnblogs.com/zhizhan/p/5615947.html)
