@@ -279,3 +279,89 @@ plt.show()
 ```
 
 参考：[Python--matplotlib绘图可视化知识点整理](https://www.cnblogs.com/zhizhan/p/5615947.html)
+
+
+## 16. 遍历数组
+三种遍历数组的方法
+
+```
+array = ["a","b","c"]
+# 1
+for item in array:
+    print(item)
+# 2
+for index in range(len(array)):
+    print(str(index)+".."+array[index])
+# 3
+for index,val in enumerate(array):
+	print(str(index)+"--"+val);
+```
+
+## 17. 数组的相关函数
+
+- 求单维数组的长度
+```
+mySeq = [1,2,3,4,5]  
+print len(mySeq)
+```
+- 二维数组的大小
+```
+import numpy as np
+x = np.array([[1,2,5],[2,3,5],[3,4,5],[2,3,6]])
+# 输出数组的行和列数
+print x.shape  # (4, 3)
+# 只输出行数
+print x.shape[0] # 4
+# 只输出列数
+print x.shape[1] # 3
+```
+
+- 如何堆叠数组，形成一个矩阵形式的数据
+```
+an_temp = [1, 8, 3, 9]	# list列表数组
+an = [an_temp]
+for i in range(1, 5):
+    an_temp = [i, i+1, i+2, i-3]
+    an.extend([an_temp])
+an = np.array(an)
+print(an)
+print(an.T)
+```
+输出：
+```
+[[ 1  8  3  9]
+ [ 1  2  3 -2]
+ [ 2  3  4 -1]
+ [ 3  4  5  0]
+ [ 4  5  6  1]]
+[[ 1  1  2  3  4]
+ [ 8  2  3  4  5]
+ [ 3  3  4  5  6]
+ [ 9 -2 -1  0  1]]
+```
+
+
+
+- 对矩阵做转置
+```
+matrix_2_new = transpose(matrix_2)
+# or
+matrix_2_new = matrix_2.T
+```
+- 矩阵拼接
+```
+列合并/扩展：np.column_stack()
+行合并/扩展：np.row_stack()
+```
+
+> [python中的矩阵运算](https://www.cnblogs.com/chamie/p/4870078.html)
+
+## 18. 如何获取输入参数数目
+
+```
+def test_var_args(*args):
+    if len(args) == 2:
+        print(args[0]+args[1])
+    else:
+        print(args[0])
+```
