@@ -93,20 +93,15 @@ General Options:
 
 > 在安装某些第三库前，由于依赖其他的库，需要安装其他库之后才能安装。一般这些依赖的第三方库的信息会存在一个命名为`requirements.txt`的文件，此时只需要在文件所在目录打开cmd命令窗口，输入cmd命令：`pip install -r requirements.txt`，即可开始安装。
 
-# python中怎样转到指定目录
-
-```sh
-import os
-\#获取当前工作目录
-os.getcwd()
-\#更改当前工作目录
-os.chdir('d:\')
-os.getcwd()
-```
-
-
 # Python代码调试
 -  错误信息
 	-  程序存在错误时，Python解释器将竭尽所能帮助你找出问题所在。程序无法成功地运行时，解释器会提供一个`traceback`，`traceback`是一条记录，指出了解释器尝试运行代码时，在什么地方陷入困境。
 
-参考资料：
+
+# python代码编程规范——PEP8 
+
+统一且设计良好的代码规范，是一种优良的编程习惯。PEP8旨在使Python代码更易读，且具有更强的协调性。
+
+PyCharm这一Python IDE使用的就是PEP8代码规范，当有不符合规范的代码出现时，编译器会以灰色下划波浪线给出相关提示。
+
+参考：[PEP 8 -- Style Guide for Python Code](https://www.python.org/dev/peps/pep-0008/#fn-hi)
