@@ -15,11 +15,11 @@ categories: [科研]
 
 **导入模块的所有方法**：
 ```
-import module_name			#表示将模块中的所有代码加载到这个位置并赋值给变量module_name，并执行模块
+import module_name		#表示将模块中的所有代码加载到这个位置并赋值给变量module_name，并执行模块
 import libs.module_name 	#表示从libs目录下导入模块文件module_name，调用方法：libs.module_name.func()
-import module1_name,module2_name		#同时导入多个模块
+import module1_name,module2_name	#同时导入多个模块
 from module_name import login,logout 	#相当于将module_name\login中的代码拿到当前位置执行
-from libs.module_name import func 		#从目录下的模块文件中导入方法func，调用：func()
+from libs.module_name import func 	#从目录下的模块文件中导入方法func，调用：func()
 from module_name import login as module_name_login 	#对导入模块中的方法取别名
 ```
 
@@ -447,6 +447,11 @@ import sys
 print(sys.executable)	# D:\py_code\second_py\venv\Scripts\python.exe
 ```
 
+拼接路径，防止字符串转义
+```
+filename = os.getcwd()+r"\ASC\datasets\TUT-acoustic-scenes-2017-development\audio\a001_0_10.wav"
+# 输出: D:\py_code\second_py\ASC\datasets\TUT-acoustic-scenes-2017-development\audio\a001_0_10.wav
+```
 
 ## [Python中join函数和os.path.join用法](https://blog.csdn.net/zmdzbzbhss123/article/details/52279008)
 os.path.join()函数，用于合并目录

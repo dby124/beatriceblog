@@ -507,7 +507,9 @@ net.layers{2}.transferFcn = 'purelin';
  
 	> （注：subplot（m,n,p）或者subplot（mnp）此函数最常用：subplot是将多个图画到一个平面上的工具。其中，m表示是图排成m行，n表示图排成n列，也就是整个figure中有n个图是排成一行的，一共m行，如果第一个数字是2就是表示2行图。p是指你现在要把曲线画到figure中哪个图上，最后一个如果是1表示是从左到右第一个位置。 ），[参考博客](http://blog.csdn.net/steelbasalt/article/details/48918001)。
 
-## matlab读取音频文件
+# matlab读取音频文件
+
+## wavread读取音频文件
 
 ```sh
 filedir = [];			% 设置路径
@@ -517,3 +519,33 @@ fle = [filedir filename];
 x = x(2000:4048,:);
 % 采用上面的方法得到的
 ```
+
+
+> 在matlab R2015a版本中运行wavread()函数，出现警告：Warning: WAVREAD will be removed in a future release. Use AUDIOREAD instead. 
+
+## audioread读取音频文件
+
+
+- **语法**
+
+```
+[y,Fs] = audioread(filename) % 从名为 filename 的文件中读取数据，并返回样本数据 y 以及该数据的采样率 Fs。
+
+[y,Fs] = audioread(filename,samples) % 读取文件中所选范围的音频样本，其中 samples 是 [start,finish] 格式的向量。
+
+[y,Fs] = audioread(___,dataType) % 返回数据范围内与 dataType（'native' 或 'double'）对应的采样数据，可以包含先前语法中的任何输入参数
+```
+
+示例：
+```
+[x,fs] = audioread('data\a001_0_10.wav');
+[M,N] = size(x);
+```
+
+- **局限性**
+	- 对于 Windows 7 或更高版本和 Linux 平台上的 MP3、MPEG-4 AAC 和 AVI 音频文件，**audioread 读取的样本数量可能比预期的少**。在 Windows 7 平台上，这是由于基础 Media Foundation 框架所致。在 Linux 平台上，这是由于基础 GStreamer 框架的局限性所致。如果需要精确的样本读取，请使用 WAV 或 FLAC 文件。
+	- 在 Linux 平台上，**audioread 读取包含用作立体声数据的单通道数据的 MPEG-4 AAC 文件**。
+
+> audioread在 R2012b 中推出。
+
+参考：[matlab文档](https://ww2.mathworks.cn/help/matlab/index.html)（里面包括matlab比较系统的介绍）
