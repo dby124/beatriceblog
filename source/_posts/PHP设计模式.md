@@ -1,4 +1,3 @@
-
 ---
 title: PHP设计模式
 date: 2018-04-21 13:22:38
@@ -135,13 +134,18 @@ UML类图是一种结构图，用于描述一个系统的静态结构。类图�
 PHP架构的目标
 
 ## PEAR 
+PHP扩展与应用库(PHP Extension and Application Repository)
 
+PEAR所起的作用可能稍落后于其他架构，不过PEAR仍然具有某些优秀的功能和以设计模式为中心的体系结构示例。
+
+- PEAR Mail——如1.2.0b1版本中，Mail.php的第49行左右包含**工厂类**的一个实例；以及前发送和后发送的处理程序的**观察者设计模式**。
+- PEAR MDB2 数据库抽象层——如2.5.0b2版本中，，存在**工厂模式**(mdb2.php的第377行左右)、**单例模式**(mdb2.php的第484行左右)和**迭代器设计模式**(iterator.php的第54行左右)。
 
 ## Zend Framework
-
+Zend Framework(简写ZF)是由 Zend 公司支持开发的完全基于 PHP5 的开源PHP开发框架，可用于开发 Web 程序和服务，ZF采用 MVC(Model–View-Controller) 架构模式来分离应用程序中不同的部分方便程序的开发和维护。
 
 ## Doctrine
-
+Doctrine是用于PHP的对象关系映射器（Object Relational Mapping，ORM）,它可以通过PHP对象轻松访问所有的数据库，例如MYSQL。这个面向对象的库为为数据库抽象层提供一个接口。
 
 # 设计模式
 
@@ -197,4 +201,4 @@ PHP架构的目标
 1. [PHP设计模式](https://blog.csdn.net/column/details/phpdesign.html)（对于设计模式介绍的比较全面）
 2. 《PHP设计模式》 梁志敏 （偏实例讲解，理论概括较少）
 3. 《大话设计模式》 程杰
-4. [设计模式培训.pdf](/file/设计模式培训.pdf)
+4. [设计模式培训.pdf](/files/设计模式培训.pdf)
