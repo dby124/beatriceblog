@@ -395,14 +395,14 @@ for index,val in enumerate(array):
 	```
 	import numpy as np
 	a = np.random.randint(-5, 5, (5, 5))
-	# （1）同(2)(3),将小于0的元素赋值为0。
+	# （1）将小于0的元素赋值为0。
 	np.maximum(a, 0)
-	# （2）对每个元素进行运算。
+	# （2）同(1)。
 	(a + abs(a)) / 2
-	# （3）将小于0的元素赋值为0。
+	# （3）同(1)。
 	b = a.copy()
 	b[b < 0] = 0
-	# （4）a元素>0时，a对应元素不变，否则a对应元素赋值为0。
+	# （4）同(1),a元素>0时，a对应元素不变，否则a对应元素赋值为0。
 	np.where(a > 0, a, 0)
 	```
 
@@ -441,6 +441,27 @@ for index,val in enumerate(array):
 	```
 	> 直接调用函数处理数组的每个元素，避免使用for循环。参考：
 [python numpy 数组如何对每个元素进行操作？](https://www.zhihu.com/question/46988087/answer/115228501)
+
+- repmat()函数
+
+	示例：
+	```
+	from numpy.matlib import repmat
+	A = np.linspace(1, len(t), splx)
+	indt = repmat(np.round(A), 3, 1)
+	```
+	> repmat()函数介绍：[MATLAB repmat函数的使用](https://blog.csdn.net/caichao08/article/details/53725620)
+- 相对于mtalab的isvector()函数
+
+	```
+	B = np.array([1, 3, 5, 6])
+	if（len(B.shape) < 2）:
+		print("B是一维数组")
+	
+	print(B.shape)		# (4,)
+	print(len(B.shape)) # 1
+	```
+	> 用于判断A是否为单行或者单列（也可以是单个元素）数据，若是二维及以上的数据，则返回0。
 
 - 对矩阵做转置
 	```
@@ -546,7 +567,7 @@ str.split(str=" ",num=string.count(str))[n]
 
 os.path.split()：将文件名和路径分割开。
 
-## 定义全局变量及常用矩阵函数
+## 定义全局变量
 
 - 定义全局变量
 
@@ -554,14 +575,4 @@ os.path.split()：将文件名和路径分割开。
 	global sply
 	```
 	> 先要用关键字global将变量定义为全局变量，然后在函数或者条件语句中对变量进行操作。
-
-- repmat()函数
-
-	示例：
-	```
-	from numpy.matlib import repmat
-	A = np.linspace(1, len(t), splx)
-	indt = repmat(np.round(A), 3, 1)
-	```
-	> repmat()函数介绍：[MATLAB repmat函数的使用](https://blog.csdn.net/caichao08/article/details/53725620)
 
