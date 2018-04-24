@@ -10,6 +10,17 @@ categories: [科研]
 
 ![PyCharm](/images/PyCharm.png)
 
+## 输出
+python3 输出语法为`print()`，对数字或者字符串进行拼接，直接调用print函数，参数使用逗号隔开的方式。示例如下：
+
+```
+summm = 2
+print("一共可以拼出", summm, "个不同的等式")
+# 输出：一共可以拼出 2 个不同的等式
+print("一共可以拼出%d个不同的等式"%summm)
+# 输出：一共可以拼出2个不同的等式
+```
+> 注意：加逗号那个数字和字符串之间会有一个空格；加%的不会有空格，除非在字符串中加空格。
 
 ## 导入模块
 
@@ -335,61 +346,116 @@ for index,val in enumerate(array):
 ## 数组的相关函数
 
 - 求单维数组的长度
-```
-mySeq = [1,2,3,4,5]  
-print len(mySeq)
-```
+	```
+	mySeq = [1,2,3,4,5]  
+	print len(mySeq)
+	```
 - 二维数组的大小
-```
-import numpy as np
-x = np.array([[1,2,5],[2,3,5],[3,4,5],[2,3,6]])
-# 输出数组的行和列数
-print x.shape  # (4, 3)
-# 只输出行数
-print x.shape[0] # 4
-# 只输出列数
-print x.shape[1] # 3
-```
+	```
+	import numpy as np
+	x = np.array([[1,2,5],[2,3,5],[3,4,5],[2,3,6]])
+	# 输出数组的行和列数
+	print x.shape  # (4, 3)
+	# 只输出行数
+	print x.shape[0] # 4
+	# 只输出列数
+	print x.shape[1] # 3
+	```
 
 - 如何堆叠数组，形成一个矩阵形式的数据
-```
-an_temp = [1, 8, 3, 9]	# list列表数组
-an = [an_temp]
-for i in range(1, 5):
-    an_temp = [i, i+1, i+2, i-3]
-    an.extend([an_temp])
-an = np.array(an)
-print(an)
-print(an.T)
-```
-输出：
-```
-[[ 1  8  3  9]
- [ 1  2  3 -2]
- [ 2  3  4 -1]
- [ 3  4  5  0]
- [ 4  5  6  1]]
-[[ 1  1  2  3  4]
- [ 8  2  3  4  5]
- [ 3  3  4  5  6]
- [ 9 -2 -1  0  1]]
-```
+	```
+	an = hilbert(x[0, :].T)
+	f, time = inst_freq(an, tt, l)
+	k = 0
+	
+	for item in x:
+	    if k > 0:
+	        an_temp = hilbert(item.T)
+	        f_temp, time_temp = inst_freq(an_temp, tt, l)
+	        # 按行拼接数组
+	        an = np.vstack((an, an_temp))
+	        f = np.vstack((f, f_temp))
+	    k = k + 1
+	```
+	输出：
+	```
+	[[ 1  8  3  9]
+	 [ 1  2  3 -2]
+	 [ 2  3  4 -1]
+	 [ 3  4  5  0]
+	 [ 4  5  6  1]]
+	[[ 1  1  2  3  4]
+	 [ 8  2  3  4  5]
+	 [ 3  3  4  5  6]
+	 [ 9 -2 -1  0  1]]
+	```
 
+- python numpy 数组批量操作
 
+	```
+	import numpy as np
+	a = np.random.randint(-5, 5, (5, 5))
+	# （1）同(2)(3),将小于0的元素赋值为0。
+	np.maximum(a, 0)
+	# （2）对每个元素进行运算。
+	(a + abs(a)) / 2
+	# （3）将小于0的元素赋值为0。
+	b = a.copy()
+	b[b < 0] = 0
+	# （4）a元素>0时，a对应元素不变，否则a对应元素赋值为0。
+	np.where(a > 0, a, 0)
+	```
+
+	输出：
+	```
+	# a
+	array([[-4, -4, -5,  2,  1],
+       [-1, -2, -1,  3,  3],
+       [-1, -2,  3, -5,  3],
+       [ 0, -3, -5,  1, -4],
+       [ 0,  3,  1,  3, -4]])
+	# （1）
+	array([[0, 0, 0, 2, 1],
+       [0, 0, 0, 3, 3],
+       [0, 0, 3, 0, 3],
+       [0, 0, 0, 1, 0],
+       [0, 3, 1, 3, 0]])
+	# （2）
+	array([[0, 0, 0, 2, 1],
+       [0, 0, 0, 3, 3],
+       [0, 0, 3, 0, 3],
+       [0, 0, 0, 1, 0],
+       [0, 3, 1, 3, 0]])
+	# （3）
+	array([[0, 0, 0, 2, 1],
+       [0, 0, 0, 3, 3],
+       [0, 0, 3, 0, 3],
+       [0, 0, 0, 1, 0],
+       [0, 3, 1, 3, 0]])
+	# （4）
+	array([[0, 0, 0, 2, 1],
+       [0, 0, 0, 3, 3],
+       [0, 0, 3, 0, 3],
+       [0, 0, 0, 1, 0],
+       [0, 3, 1, 3, 0]])
+	```
+	> 直接调用函数处理数组的每个元素，避免使用for循环。参考：
+[python numpy 数组如何对每个元素进行操作？](https://www.zhihu.com/question/46988087/answer/115228501)
 
 - 对矩阵做转置
-```
-matrix_2_new = transpose(matrix_2)
-# or
-matrix_2_new = matrix_2.T
-```
-- 矩阵拼接
-```
-列合并/扩展：np.column_stack()
-行合并/扩展：np.row_stack()
-```
+	```
+	matrix_2_new = transpose(matrix_2)
+	# or
+	matrix_2_new = matrix_2.T
+	```
 
-> [python中的矩阵运算](https://www.cnblogs.com/chamie/p/4870078.html)
+- 矩阵拼接
+	```
+	列合并/扩展：np.column_stack()
+	行合并/扩展：np.row_stack()
+	```
+	
+	> [python中的矩阵运算](https://www.cnblogs.com/chamie/p/4870078.html)
 
 ## 如何获取输入参数数目
 
@@ -479,3 +545,23 @@ str.split(str=" ",num=string.count(str))[n]
 ```
 
 os.path.split()：将文件名和路径分割开。
+
+## 定义全局变量及常用矩阵函数
+
+- 定义全局变量
+
+	```
+	global sply
+	```
+	> 先要用关键字global将变量定义为全局变量，然后在函数或者条件语句中对变量进行操作。
+
+- repmat()函数
+
+	示例：
+	```
+	from numpy.matlib import repmat
+	A = np.linspace(1, len(t), splx)
+	indt = repmat(np.round(A), 3, 1)
+	```
+	> repmat()函数介绍：[MATLAB repmat函数的使用](https://blog.csdn.net/caichao08/article/details/53725620)
+
