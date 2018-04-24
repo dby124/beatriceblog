@@ -451,6 +451,7 @@ for index,val in enumerate(array):
 	indt = repmat(np.round(A), 3, 1)
 	```
 	> repmat()函数介绍：[MATLAB repmat函数的使用](https://blog.csdn.net/caichao08/article/details/53725620)
+
 - 相对于mtalab的isvector()函数
 
 	```
@@ -477,6 +478,27 @@ for index,val in enumerate(array):
 	```
 	
 	> [python中的矩阵运算](https://www.cnblogs.com/chamie/p/4870078.html)
+
+- 数据类型转换
+
+	```
+	import numpy as np
+	a = np.array([1.0945377,  8.52199916,  3.62490646,  0.21260126])
+	print(a.dtype)
+	b = a.astype(int)
+	print(b)
+	print(b.dtype)
+	```
+	> numpy数组默认的dtype是float64，将浮点型转为整数时，**用astype(int) 函数，该函数不改变数组长度**。
+	
+	输出：
+	```
+	float64
+	[1 8 3 0]
+	int32
+	```
+	
+	> 参考：[numpy数据类型dtype转换](http://www.mamicode.com/info-detail-1180317.html)
 
 ## 如何获取输入参数数目
 
