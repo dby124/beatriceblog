@@ -16,9 +16,7 @@
     "$",
     "jQuery",
     "NexT",
-    "CONFIG",
-    "require",
-    "hexo"
+    "CONFIG"
   ],
   "quotmark": true,
   "trailing": true,

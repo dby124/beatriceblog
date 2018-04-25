@@ -1,13 +1,6 @@
-/**
- * lazy-image.js | global hexo script.
- *
- * Usage:
- *
- * {% lazyimage /path/to/image, alt, title %}
- * {% li /path/to/image, alt, title %}
- */
-
-'use strict';
+/* global hexo */
+// Usage: {% lazyimage /path/to/image, alt, title %}
+// Alias: {% li /path/to/image, alt, title %}
 
 function lazyImage(args) {
   args = args.join(' ').split(',');
@@ -29,5 +22,5 @@ function lazyImage(args) {
   return image.join(' ');
 }
 
-hexo.extend.tag.register('lazyimage', lazyImage, { ends: false });
-hexo.extend.tag.register('li', lazyImage, { ends: false });
+hexo.extend.tag.register('lazyimage', lazyImage);
+hexo.extend.tag.register('li', lazyImage);

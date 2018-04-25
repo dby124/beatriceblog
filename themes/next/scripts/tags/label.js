@@ -9,8 +9,6 @@
  *           If not defined, default class will be selected.
  */
 
-'use strict';
-
 function postLabel (args) {
   args = args.join(' ').split('@');
   var classes = args[0] || 'default';

@@ -1,16 +1,6 @@
-/**
- * group-pictures.js | global hexo script.
- *
- * Usage:
- *
- * {% grouppicture [group]-[layout] %}{% endgrouppicture %}
- * {% gp [group]-[layout] %}{% endgp %}
- *
- * [group]  : Total number of pictures to add in the group.
- * [layout] : Default picture under the group to show.
- */
-
-'use strict';
+/* global hexo */
+// Usage: {% grouppicture group-layout %}{% endgrouppicture %}
+// Alias: {% gp group-layout %}{% endgp %}
 
 function groupPicture(args, content) {
   args = args[0].split('-');

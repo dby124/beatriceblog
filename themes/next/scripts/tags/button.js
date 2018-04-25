@@ -1,13 +1,6 @@
-/**
- * button.js | global hexo script.
- *
- * Usage:
- *
- * {% button /path/to/url/, text, icon [class], title %}
- * {% btn /path/to/url/, text, icon [class], title %}
- */
-
-'use strict';
+/* global hexo */
+// Usage: {% button /path/to/url/, text, icon [class], title %}
+// Alias: {% btn /path/to/url/, text, icon [class], title %}
 
 function postButton(args) {
   args = args.join(' ').split(',');
@@ -24,15 +17,15 @@ function postButton(args) {
   icon = icon.trim();
   title = title.trim();
 
-  var result = ['<a class="btn" href="' + url + '"'];
+  var result = ['<span class="post-button text-center"><a class="btn" href="' + url + '"'];
   title.length > 0 && result.push(' title="' + title + '"');
   result.push('>');
   icon.length > 0 && result.push('<i class="fa fa-' + icon + '"></i>');
   text.length > 0 && result.push(text);
-  result.push('</a>');
+  result.push('</a></span>');
 
   return result.join('');
 }
 
-hexo.extend.tag.register('button', postButton, { ends: false });
-hexo.extend.tag.register('btn', postButton, { ends: false });
+hexo.extend.tag.register('button', postButton);
+hexo.extend.tag.register('btn', postButton);

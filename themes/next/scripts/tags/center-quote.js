@@ -1,13 +1,6 @@
-/**
- * center-quote.js | global hexo script.
- *
- * Usage:
- *
- * {% centerquote %}Something{% endcenterquote %}
- * {% cq %}Something{% endcq %}
- */
-
-'use strict';
+/* global hexo */
+// Usage: {% centerquote %} Something {% endcenterquote %}
+// Alias: {% cq %} Something {% endcq %}
 
 function centerQuote (args, content) {
   return '<blockquote class="blockquote-center">' +
