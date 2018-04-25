@@ -36,8 +36,6 @@ ___
 
 　　Size：规定文本的尺寸大小。可能的值：从 1 到 7 的数字。浏览器默认值是 3。
 
-![markdown_fontcolor](/images/markdown_fontcolor.png)
-
 # 表格
 
 	```sh
@@ -48,13 +46,12 @@ ___
 	| zebra stripes | are neat      |    $1 |
 	```
 
-	```sh
 	项目     | 价格
 	-------- | ---
 	Computer | $1600
 	Phone    | $12
 	Pipe     | $1
-	```
+
 
 # 注释
 `<!-- 注释 -->`,加上HTML的注释符号，其中的内容在网页中不会显示。

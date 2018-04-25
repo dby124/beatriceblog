@@ -273,6 +273,20 @@ area = polyarea(1:length(x),x);       %求曲线以下的面积
 	B = repmat(A,1,3)
 	% 得到的结果，生成2*6的矩阵 B = [1,3,1,3,1,3;4,2,4,2,4,2]
 	```
+- 矩阵数据叠加求和——accumarray
+
+	```
+	A = accumarray(subs,val,sz,fun,fillval)	
+		sub：提供累计信息的指示向量，指示的是计算值在生成矩阵A中的位置，同时指示的是val中需要累加值的位置。	
+		val：提供累计数值的向量	
+		sz：控制输出向量A的size	
+		fun：用于计算累计后向量的函数，默认为@sum，即累加	
+		fillval：填补A中的空缺项，默认为0
+	```
+	> 理解：首先，函数根据参数中sz（若无，根据subs最大的值确定维度），生成一个维度为sz的中间矩阵B，然后函数根据subs中的指示，将val中的数值摆放到B中，对于同一个位置的值进行fun的运算（默认为求和），对于空去的位置填0，最后B计算后得到矩阵A。[计算示例](https://jingyan.baidu.com/article/414eccf6ab5a9a6b431f0ad0.html)
+
+	> 参考：[accumarray](http://www.mathworks.com/help/matlab/ref/accumarray.html;jsessionid=5c613a99e059f864d28c882a757d#responsive_offcanvas)
+
 
 - 返回位置信息min函数，输入为一个矩阵，则反馈回来的是每列的最小值和对应的位置。
 
@@ -439,7 +453,6 @@ net.layers{2}.transferFcn = 'purelin';
 
 - 波形
 
-
 ![logsig](/images/logsig.png)
 
 # 画图
@@ -527,6 +540,26 @@ net.layers{2}.transferFcn = 'purelin';
 	- 描述：`h = subplot(m,n,p)`或者`subplot(mnp)`将figure划分为`m×n`块，在第p块创建坐标系，并返回它的句柄。当m,n,p<10时，可以简化为subplot(mnp)或者subplot mnp 
  
 	> （注：subplot（m,n,p）或者subplot（mnp）此函数最常用：subplot是将多个图画到一个平面上的工具。其中，m表示是图排成m行，n表示图排成n列，也就是整个figure中有n个图是排成一行的，一共m行，如果第一个数字是2就是表示2行图。p是指你现在要把曲线画到figure中哪个图上，最后一个如果是1表示是从左到右第一个位置。 ），[参考博客](http://blog.csdn.net/steelbasalt/article/details/48918001)。
+
+	- 示例：
+	```
+	figure
+	subplot(2,2,1)
+	plot(s,'k')
+	ylabel('signal')
+	
+	subplot(2,2,,2)
+	plot(imp(1,:),'k')
+	ylabel('imf1')
+	
+	subplot(2,2,,3)
+	plot(imp(2,:),'k')
+	ylabel('imf2')
+	
+	subplot(2,2,,4)
+	plot(imp(3,:),'k')
+	ylabel('imf3')
+	```
 
 # matlab读取音频文件
 
